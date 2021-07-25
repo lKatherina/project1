@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Graph from "react-graph-vis";
 import AttemptDataService from "../../firebase/AttemptDataService";
 import { graphProblems } from '../../config/graphProblems/graphProblems'
 import { useParams } from 'react-router-dom'
@@ -66,11 +67,26 @@ export default class Problem extends Component {
         <div>
             {this.problemConfig.name}
             {this.problemConfig.theory.text}
-            {this.problemConfig.theory.graphAnimationExample.graphElements.map(element => element.number)}
-            {this.problemConfig.theory.graphAnimationExample.animationPath.toString()}
-            {this.problemConfig.graphQuestion.graphElements.map(element => element.number)}
-            {this.problemConfig.graphQuestion.correctPaths.toString()}
+            <Graph
+              options={graphOptions}
+              graph={this.problemConfig.theory.graphAnimationExample.graph}
+            />
         </div>
     );
   }
 }
+
+const graphOptions = {
+  layout: {
+    hierarchical: true
+  },
+  edges: {
+    color: "#000000",
+    physics: false
+  },
+  interaction: {
+    dragNodes: false,
+    dragView: false
+  },
+  height: "500px"
+};

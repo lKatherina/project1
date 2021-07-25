@@ -3,38 +3,40 @@ export const dfs = {
     theory: {
         text: "bla bla bla",
         graphAnimationExample: {
-            graphElements: [
-            {
-                number: 1,
-                connections: [2, 3]
+            graph: {
+                nodes: [
+                  { id: 1 },
+                  { id: 2 },
+                  { id: 3 },
+                  { id: 4 },
+                  { id: 5 }
+                ],
+                edges: [
+                  { from: 1, to: 2 },
+                  { from: 1, to: 3 },
+                  { from: 2, to: 4 },
+                  { from: 2, to: 5 }
+                ]
             },
-            {
-                number: 2,
-                connections: [1, 3]
-            },
-            {
-                number: 3,
-                connections: [1, 2]
-            }
-            ],
             animationPath: [1, 2, 1, 3]
         },
     },
     graphQuestion: {
-        graphElements: [
-        {
-            number: 1,
-            connections: [2, 3]
+        graph: {
+            nodes: [
+              { id: 1 },
+              { id: 2 },
+              { id: 3 },
+              { id: 4 },
+              { id: 5 }
+            ],
+            edges: [
+              { from: 1, to: 2 },
+              { from: 1, to: 3 },
+              { from: 2, to: 4 },
+              { from: 2, to: 5 }
+            ]
         },
-        {
-            number: 2,
-            connections: [1, 3]
-        },
-        {
-            number: 3,
-            connections: [1, 2]
-        }
-        ],
         correctPaths: [
             [1, 2, 1, 3],
             [1, 3, 1, 2]

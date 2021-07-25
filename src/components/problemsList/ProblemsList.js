@@ -6,13 +6,18 @@ export default class ProblemsList extends Component {
 
   render() {
     return (
-        <div>
+        <div className="container pt-5 justify-content-center w-50">
+            <div className="row h5 text-center">
+                This website is to assess and improve your graph problem solving skills.
+                <br/>
+                Please choose a graph problem to solve:
+            </div>
             {graphProblems && graphProblems.map((problemConfig) =>
-              <div>
-                <Link to={`/problems/${problemConfig.name}`} className="nav-link">
+                <div className="row pt-2">
+                <Link to={`/problems/${problemConfig.name}`} className="btn-dark btn">
                   {problemConfig.name}
                 </Link>
-              </div>
+                </div>
             )}
         </div>
     );
