@@ -40,5 +40,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "homepage": "https://grig-koksharov.github.io/graph-test",
+  "predeploy": "yarn run build",
+  "deploy": "gh-pages -d build"
 }

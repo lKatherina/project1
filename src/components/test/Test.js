@@ -80,13 +80,13 @@ export default class Test extends Component {
                   if (this.state.possibleCorrectPaths.length == 0) {
                     toast.error("The test is failed.")
                     this.setState({alreadyFailed: true})
-                    this.submitAttempt("SUCCESS")
+                    this.submitAttempt("FAILURE")
                     return;
                   }
                   if (this.state.possibleCorrectPaths.some((possibleCorrectPath) => possibleCorrectPath.length === this.state.currentPath.length)) {
                     toast.success("The test is passed.")
                     this.setState({alreadyPassed: true})
-                    this.submitAttempt("FAILURE")
+                    this.submitAttempt("SUCCESS")
                     return;
                   }
                 }
