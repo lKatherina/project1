@@ -1,0 +1,91 @@
+import {Link, Redirect} from 'react-router-dom';
+import React, {Component} from 'react';
+import firebase from 'firebase/app'
+import "firebase/auth";
+import {
+  FirebaseAuthProvider,
+  FirebaseAuthConsumer,
+  IfFirebaseAuthed,
+  IfFirebaseAuthedAnd
+} from "@react-firebase/auth";
+
+class Login extends Component {
+
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: "",
+    };
+  }
+
+  handleEmailChange(event: SyntheticEvent<HTMLInputElement>) {
+    this.setState({email: event.currentTarget.value});
+  }
+
+  handlePasswordChange(event: SyntheticEvent<HTMLInputElement>) {
+    this.setState({password: event.currentTarget.value});
+  }
+
+  login(event: SyntheticEvent<HTMLInputElement>) {
+    event.preventDefault();
+    if (this.state.email.length >= 5 && this.state.password.length >= 5) {
+      console.log("LOGGING IN NOT IMPLEMENTED YET")
+    }
+  }
+
+  render() {
+    return (
+      <div className="text-center container h-100 flex-grow">
+        <div className="row align-items-center h-100 flex-grow">
+          <div className="col-lg-4 col-md-6 col-sm-8 col-xs-10 mx-auto">
+            <form className="d-flex flex-column align-items-center form-signin" onSubmit={(e) => {
+              this.login(e)
+            }}>
+              <h1 className="pt-5 mt-5 pb-3">Sign in please</h1>
+
+              <label className="sr-only" htmlFor="inputEmail">Email address</label>
+              <input
+                type="email"
+                id="inputEmail"
+                className="form-control mb-3 mt-3 pl-4"
+                style={{border: "none", fontSize: "14px", borderBottom: "1px solid #eee"}}
+                placeholder="Email"
+                onChange={(e) => {
+                  this.handleEmailChange(e)
+                }}
+                required/>
+
+              <label className="sr-only" htmlFor="inputPassword">Password</label>
+              <input
+                type="password"
+                id="inputPassword"
+                className="form-control mb-4 pl-4"
+                style={{border: "none", fontSize: "14px", borderBottom: "1px solid #eee"}}
+                placeholder="Password"
+                onChange={(e) => {
+                  this.handlePasswordChange(e)
+                }}
+                required/>
+
+              <button className="btn btn-dark border-0 mt-3 mb-3 w-100 py-1"
+                      style={{fontSize: "18px", background: '#37AAE9'}}
+                      type="submit">
+                Sign In</button>
+
+                <button className="btn btn-dark border-0 mt-3 mb-3 w-100 py-1"
+                  onClick={() => {
+                    const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+                    firebase.auth().signInWithPopup(googleAuthProvider);
+                  }}
+                >
+                  Or Sign In with Google
+                </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    )
+  }
+}
+export default Login;
