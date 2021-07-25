@@ -62,14 +62,36 @@ export default class Problem extends Component {
     });
   }
 
+  async runGraphAnimationExample(network) {
+    for (const edgeId of this.problemConfig.theory.graphAnimationExample.animationPath) {
+        network.selectEdges([edgeId]);
+        await this.timer(1000);
+    }
+    await this.timer(2000);
+    this.runGraphAnimationExample(network)
+  }
+
+  timer = ms => new Promise(res => setTimeout(res, ms))
+
   render() {
     return (
         <div>
-            {this.problemConfig.name}
-            {this.problemConfig.theory.text}
+            <h2>{this.problemConfig.name}</h2>
+            <div>{this.problemConfig.theory.text}</div>
+            <div className="btn-dark btn mt-3">
+              Start Test
+            </div>
             <Graph
               options={graphOptions}
               graph={this.problemConfig.theory.graphAnimationExample.graph}
+              events={{
+                selectEdge: (event) => {
+                  console.log(event);
+                }
+              }}
+              getNetwork={(network) => {
+                this.runGraphAnimationExample(network);
+              }}
             />
         </div>
     );
@@ -86,7 +108,8 @@ const graphOptions = {
   },
   interaction: {
     dragNodes: false,
-    dragView: false
+    dragView: false,
+    zoomView: false
   },
   height: "500px"
 };

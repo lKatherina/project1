@@ -14,6 +14,7 @@ import {
 import { graphProblems } from './config/graphProblems/graphProblems';
 import { firebaseConfig } from './config/firebase';
 
+import Header from "./components/header/Header";
 import SignUp from "./components/signup/SignUp";
 import Login from "./components/login/Login";
 import Problem from "./components/problem/Problem";
@@ -28,35 +29,7 @@ export const App = () => {
           {({ isSignedIn, user, providerId }) => {
             return (
             <div>
-                <nav className="navbar navbar-expand navbar-dark bg-dark px-5">
-                  <a className="navbar-brand">
-                    Graph Problem Solving
-                  </a>
-                  <div className="navbar-nav mr-auto">
-                    {!isSignedIn && <>
-                    <li className="nav-item">
-                      <Link to="/login" className="nav-link">
-                        Login
-                      </Link>
-                    </li>
-                    <li className="nav-item">
-                      <Link to="/sign-up" className="nav-link">
-                        Sign Up
-                      </Link>
-                    </li>
-                    </>}
-                    {isSignedIn && <>
-                    <li className="nav-item">
-                      <Link onClick={() => {
-                          firebase.auth().signOut();
-                        }}
-                        className="nav-link">
-                        Sign Out
-                      </Link>
-                    </li>
-                    </>}
-                  </div>
-                </nav>
+              <Header/>
               <div>
                 <div className="container mt-3">
                   <Switch>

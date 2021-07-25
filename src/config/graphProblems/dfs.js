@@ -1,7 +1,7 @@
 export const dfs = {
     name: "DFS",
     theory: {
-        text: "bla bla bla",
+        text: "Depth-first search (DFS) is an algorithm for traversing or searching tree or graph data structures. The algorithm starts at the root node (selecting some arbitrary node as the root node in the case of a graph) and explores as far as possible along each branch before backtracking.",
         graphAnimationExample: {
             graph: {
                 nodes: [
@@ -12,13 +12,13 @@ export const dfs = {
                   { id: 5 }
                 ],
                 edges: [
-                  { from: 1, to: 2 },
-                  { from: 1, to: 3 },
-                  { from: 2, to: 4 },
-                  { from: 2, to: 5 }
+                  { id: 12, from: 1, to: 2 },
+                  { id: 13, from: 1, to: 3 },
+                  { id: 24, from: 2, to: 4 },
+                  { id: 25, from: 2, to: 5 }
                 ]
             },
-            animationPath: [1, 2, 1, 3]
+            animationPath: [12, 13, 24, 25]
         },
     },
     graphQuestion: {
@@ -31,10 +31,10 @@ export const dfs = {
               { id: 5 }
             ],
             edges: [
-              { from: 1, to: 2 },
-              { from: 1, to: 3 },
-              { from: 2, to: 4 },
-              { from: 2, to: 5 }
+              { id: 12, from: 1, to: 2 },
+              { id: 13, from: 1, to: 3 },
+              { id: 24, from: 2, to: 4 },
+              { id: 25, from: 2, to: 5 }
             ]
         },
         correctPaths: [
