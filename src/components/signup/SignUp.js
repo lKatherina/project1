@@ -10,7 +10,7 @@ import {
 } from "@react-firebase/auth";
 import { toast } from 'react-toastify';
 
-class Login extends Component {
+class SignUp extends Component {
 
   constructor(props: Props) {
     super(props);
@@ -28,15 +28,15 @@ class Login extends Component {
     this.setState({password: event.currentTarget.value});
   }
 
-  login(event: SyntheticEvent<HTMLInputElement>) {
+  signUp(event: SyntheticEvent<HTMLInputElement>) {
     event.preventDefault();
     if (this.state.email.length >= 5 && this.state.password.length >= 5) {
-      firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+      firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
         .catch((error) => {
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          toast.error(errorMessage)
-        });
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            toast.error(errorMessage)
+          });
     }
   }
 
@@ -46,9 +46,9 @@ class Login extends Component {
         <div className="row align-items-center h-100 flex-grow">
           <div className="col-lg-4 col-md-6 col-sm-8 col-xs-10 mx-auto">
             <form className="d-flex flex-column align-items-center form-signin" onSubmit={(e) => {
-              this.login(e)
+              this.signUp(e)
             }}>
-              <h1 className="pt-5 mt-5 pb-3">Sign in please</h1>
+              <h1 className="pt-5 mt-5 pb-3">Sign up please</h1>
 
               <label className="sr-only" htmlFor="inputEmail">Email address</label>
               <input
@@ -77,7 +77,8 @@ class Login extends Component {
               <button className="btn btn-dark border-0 mt-3 mb-3 w-100 py-1"
                       style={{fontSize: "18px", background: '#37AAE9'}}
                       type="submit">
-                Sign In</button>
+                Sign Up
+              </button>
 
                 <button className="btn btn-dark border-0 mb-3 w-100 py-1"
                   onClick={() => {
@@ -85,7 +86,7 @@ class Login extends Component {
                     firebase.auth().signInWithPopup(googleAuthProvider);
                   }}
                 >
-                  Or Sign In with Google
+                  Or Sign Up with Google
                 </button>
             </form>
           </div>
@@ -94,4 +95,4 @@ class Login extends Component {
     )
   }
 }
-export default Login;
+export default SignUp;
