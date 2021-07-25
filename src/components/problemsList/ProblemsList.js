@@ -14,7 +14,7 @@ export default class ProblemsList extends Component {
             </div>
             {graphProblems && graphProblems.map((problemConfig) =>
                 <div className="row pt-2">
-                <Link to={`/problems/${problemConfig.name}`} className="btn-dark btn">
+                <Link to={`/problems/${problemConfig.name}/theory`} className="btn-dark btn">
                   {problemConfig.name}
                 </Link>
                 </div>

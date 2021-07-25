@@ -17,7 +17,8 @@ import { firebaseConfig } from './config/firebase';
 import Header from "./components/header/Header";
 import SignUp from "./components/signup/SignUp";
 import Login from "./components/login/Login";
-import Problem from "./components/problem/Problem";
+import Theory from "./components/theory/Theory";
+import Test from "./components/test/Test";
 import ProblemsList from "./components/problemsList/ProblemsList";
 
 export const App = () => {
@@ -35,7 +36,8 @@ export const App = () => {
                   <Switch>
                     {isSignedIn && <>
                     <Route exact path="/problems" component={ProblemsList} />
-                    <Route exact path="/problems/:name" component={Problem} />
+                    <Route exact path="/problems/:name/theory" component={Theory} />
+                    <Route exact path="/problems/:name/test" component={Test} />
                     <Redirect exact from="/" to="/problems" />
                     <Redirect exact from="/login" to="/problems" />
                     </>}
