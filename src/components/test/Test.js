@@ -31,17 +31,17 @@ export default class Test extends Component {
     AttemptDataService.create(data)
       .catch((e) => {
         console.log(e);
-        toast.error("Cannot submit your results to the server: " + e.message);
+        toast.error("Не удается отправить ваши результаты на сервер: " + e.message);
       });
   }
 
   render() {
     return (
         <div>
-            <h2>{this.problemConfig.name} Test</h2>
-            <div>Please choose a next edge that the algorithm must choose. Keep choosing edges until the algorithm is done.</div>
+            <h2>{this.problemConfig.name} Тест</h2>
+            <div>Пожалуйста, выберите следующее ребро, которое должен выбрать алгоритм. Продолжайте выбирать ребра до тех пор, пока алгоритм не будет завершен.</div>
             <Link to={`/problems/${this.problemConfig.name}/theory`} className="btn-dark btn mt-3">
-              Back to Theory
+              Обратно к теории
             </Link>
             <Graph
               options={graphOptions}
@@ -49,19 +49,19 @@ export default class Test extends Component {
               events={{
                 selectEdge: (event) => {
                   if (this.state.alreadyFailed) {
-                    toast.info("The test is already failed.")
+                    toast.info("Тест уже провален.")
                     return;
                   }
                   if (this.state.alreadyPassed) {
-                    toast.info("The test is already passed.")
+                    toast.info("Тест уже пройден.")
                     return;
                   }
                   if (event.nodes.length !== 0) {
-                    toast.info("A node is selected. Please select an edge instead.")
+                    toast.info("Выбран узел. Пожалуйста, выберите вместо этого ребро.")
                     return;
                   }
                   if (event.edges.length > 1) {
-                    toast.error("Not expected that more than 1 node is selected.")
+                    toast.error("Не ожидается, что будет выбрано более 1 узла.")
                     return;
                   }
                   const selectedEdge = event.edges[0];
@@ -78,13 +78,13 @@ export default class Test extends Component {
                   }
 
                   if (this.state.possibleCorrectPaths.length == 0) {
-                    toast.error("The test is failed.")
+                    toast.error("Тест не пройден.")
                     this.setState({alreadyFailed: true})
                     this.submitAttempt("FAILURE")
                     return;
                   }
                   if (this.state.possibleCorrectPaths.some((possibleCorrectPath) => possibleCorrectPath.length === this.state.currentPath.length)) {
-                    toast.success("The test is passed.")
+                    toast.success("Тест сдан.")
                     this.setState({alreadyPassed: true})
                     this.submitAttempt("SUCCESS")
                     return;

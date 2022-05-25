@@ -8,9 +8,7 @@ export default class ProblemsList extends Component {
     return (
         <div className="container pt-5 justify-content-center w-50">
             <div className="row h5 text-center">
-                This website is to assess and improve your graph problem solving skills.
-                <br/>
-                Please choose a graph problem to solve:
+                Выберите алгоритм для изучения:
             </div>
             {graphProblems && graphProblems.map((problemConfig) =>
                 <div className="row pt-2">

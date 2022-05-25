@@ -1,7 +1,38 @@
 export const dfs = {
     name: "DFS",
     theory: {
-        text: "Depth-first search (DFS) is an algorithm for traversing or searching tree or graph data structures. The algorithm starts at the root node (selecting some arbitrary node as the root node in the case of a graph) and explores as far as possible along each branch before backtracking.",
+        paragraphs: [
+          "Алгоритм поиска в глубину DFS реализует стратегию обхода противоположную BFS. Сначала обнаруживаются вершины максимально  удаленные от начальной вершины s, а затем алгоритм постепенно возвращается к начальной.\
+           Еще одной особенностью DFS является то, что если все вершины доступные из s уже исследованы, но при этом часть вершин осталась непосещенными, то DFS выбирает новую корневую вершины и продолжает обход.\
+           В целях предотвращения повторных визитов вершин DFS использует два типа меток:",
+          "- время обнаружения d[v] – обновляется при первом посещении вершины;",
+          "- время окончания f[v] – обновляется, когда обход завершен для списка смежных вершин.",
+          "Алгоритм поиска в ширину реализуется рекурсивной процедурой DFS. Кроме точки входа алгоритм включает две вспомогательные процедуры.\
+          Процедура DFS_Check осуществляет проверку того, что вершина ранее не была посещена. Подпроцедура DFS_Visit отвечает за сканирование  списка смежных вершин.",
+          "DFS(G,s)".split("DFS(G,s)").map((paragraphs, index) => <>{index !== 0 && <b>DFS(G,s)</b>} {paragraphs}</>),
+          "1. d = [0,...,0]",
+          "2. f = [0,...,0]",
+          "3. π = [∞,..,∞]",
+          "4. foreach s ∈ V",
+          "5. ? пробел DFS_Check(s, s)",
+          "DFS_Check(u, v)".split("DFS_Check(u, v)").map((paragraphs, index) => <>{index !== 0 && <b>DFS_Check(u, v)</b>} {paragraphs}</>),
+          "1. if π[v] = ∞",
+          "2. π[v] = u",
+          "3. d[v] = time",
+          "4. time++",
+          "5. DFS_Visit(u,v)",
+          "DFS_Visit(u,v)".split("DFS_Visit(u,v)").map((paragraphs, index) => <>{index !== 0 && <b>DFS_Visit(u,v)</b>} {paragraphs}</>),
+          "1. foreach (v,w) ∈ E",
+          "2. DFS_Check(v,w)",
+          "3. f[v] = time",
+          "4. time++",
+          "Проведем анализ времени выполнения алгоритма поиска в глубину:",
+          "- инициализация переменных потребует O(n) операций.",
+          "- DFS_Visit вызывается в точности один раз для каждой вершины (у которых π[v] = ∞), откуда общее время выполнения O(n).",
+          "- DFS_Check вызывается один раз для исходящих граней, откуда общее время выполнения O(m).",
+          "Общее время выполнения - O(n + m)."
+
+        ],
         graphAnimationExample: {
             graph: {
                 nodes: [
@@ -9,16 +40,22 @@ export const dfs = {
                   { id: 2 },
                   { id: 3 },
                   { id: 4 },
-                  { id: 5 }
+                  { id: 5 },
+                  { id: 6 },
+                  { id: 7 },
+                  { id: 8 },
                 ],
                 edges: [
                   { id: 12, from: 1, to: 2 },
                   { id: 13, from: 1, to: 3 },
-                  { id: 24, from: 2, to: 4 },
-                  { id: 25, from: 2, to: 5 }
+                  { id: 15, from: 1, to: 5 },
+                  { id: 14, from: 1, to: 4 },
+                  { id: 26, from: 2, to: 6 },
+                  { id: 27, from: 2, to: 7 },
+                  { id: 38, from: 3, to: 8 }
                 ]
             },
-            animationPath: [12, 13, 24, 25]
+            animationPath: [12, 26, 27, 13, 38, 14, 15]
         },
     },
     graphQuestion: {
@@ -28,18 +65,24 @@ export const dfs = {
               { id: 2 },
               { id: 3 },
               { id: 4 },
-              { id: 5 }
+              { id: 5 },
+              { id: 6 },
+              { id: 7 },
             ],
             edges: [
               { id: 12, from: 1, to: 2 },
-              { id: 13, from: 1, to: 3 },
+              { id: 16, from: 1, to: 6 },
+              { id: 23, from: 2, to: 3 },
               { id: 24, from: 2, to: 4 },
-              { id: 25, from: 2, to: 5 }
+              { id: 45, from: 4, to: 5 },
+              { id: 67, from: 6, to: 7 }
             ]
         },
         correctPaths: [
-            [12, 13],
-            [13, 12]
+            [12, 23, 24, 45, 16, 67],
+            [16, 67, 12, 23, 24, 45],
+            [12, 24, 45, 23, 16, 17],
+            [16, 67, 12, 24, 45, 23]
         ]
     }
 }

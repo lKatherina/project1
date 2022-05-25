@@ -24,10 +24,16 @@ export default class Theory extends Component {
   render() {
     return (
         <div>
-            <h2>{this.problemConfig.name} Theory</h2>
-            <div>{this.problemConfig.theory.text}</div>
+            <h2>{this.problemConfig.name} Теория</h2>
+            <div>
+              {this.problemConfig.theory.paragraphs.map(paragraph => (
+                <p>
+                  {paragraph}
+                </p>
+              ))}
+            </div>
             <Link to={`/problems/${this.problemConfig.name}/test`} className="btn-dark btn mt-3">
-              Start Test
+              Пройти тест
             </Link>
             <Graph
               options={graphOptions}

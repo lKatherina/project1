@@ -48,9 +48,9 @@ class SignUp extends Component {
             <form className="d-flex flex-column align-items-center form-signin" onSubmit={(e) => {
               this.signUp(e)
             }}>
-              <h1 className="pt-5 mt-5 pb-3">Sign up please</h1>
+              <h1 className="pt-5 mt-5 pb-3">Регистрация</h1>
 
-              <label className="sr-only" htmlFor="inputEmail">Email address</label>
+              <label className="sr-only" htmlFor="inputEmail">Почта</label>
               <input
                 type="email"
                 id="inputEmail"
@@ -62,7 +62,7 @@ class SignUp extends Component {
                 }}
                 required/>
 
-              <label className="sr-only" htmlFor="inputPassword">Password</label>
+              <label className="sr-only" htmlFor="inputPassword">Пароль</label>
               <input
                 type="password"
                 id="inputPassword"
@@ -77,7 +77,7 @@ class SignUp extends Component {
               <button className="btn btn-dark border-0 mt-3 mb-3 w-100 py-1"
                       style={{fontSize: "18px", background: '#37AAE9'}}
                       type="submit">
-                Sign Up
+                Зарегистрироваться
               </button>
 
                 <button className="btn btn-dark border-0 mb-3 w-100 py-1"
@@ -86,7 +86,7 @@ class SignUp extends Component {
                     firebase.auth().signInWithPopup(googleAuthProvider);
                   }}
                 >
-                  Or Sign Up with Google
+                  Зарегистрироваться с помощью Google
                 </button>
             </form>
           </div>
