@@ -53,7 +53,11 @@ const graphOptions = {
   },
   edges: {
     color: "#000000",
-    physics: false
+    physics: false,
+    width: 2
+  },
+  nodes: {
+    font: {size: 25}
   },
   interaction: {
     dragNodes: false,

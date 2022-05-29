@@ -78,13 +78,13 @@ export default class Test extends Component {
                   }
 
                   if (this.state.possibleCorrectPaths.length == 0) {
-                    toast.error("Тест не пройден.")
+                    toast.error("Тест не пройден.", { autoClose: false })
                     this.setState({alreadyFailed: true})
                     this.submitAttempt("FAILURE")
                     return;
                   }
                   if (this.state.possibleCorrectPaths.some((possibleCorrectPath) => possibleCorrectPath.length === this.state.currentPath.length)) {
-                    toast.success("Тест сдан.")
+                    toast.success("Тест сдан.", { autoClose: false })
                     this.setState({alreadyPassed: true})
                     this.submitAttempt("SUCCESS")
                     return;
