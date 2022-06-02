@@ -4,10 +4,10 @@ export const kraskal = {
         paragraphs: [
             "Особенностью алгоритма Краскала является то, что в качестве представления графа может использовать последовательность граней. \
             Для разряженных графов (m = O(n)) этот метод является наиболее эффективным.",
-            "KruskalMST(G)".split("KruskalMST(G)").map((paragraphs, index) => <>{index !== 0 && <b>KruskalMST(G)</b>} {paragraphs}</>),
+            //"KruskalMST(G)".split("KruskalMST(G)").map((paragraphs, index) => <>{index !== 0 && <b>KruskalMST(G)</b>} {paragraphs}</>),
             "1. T = {}",
             "2. foreach (u,v) ∈ E в порядке возрастания веса c",
-            "3. if вершины u,v принадлежат разным поддеревьям T",
+            "3. /TAB/ if вершины u,v принадлежат разным поддеревьям T",
             "4. T = T ∪ {(u,v)}",
             "5. return T",
             "Концепция алгоритма описывается следующим образом. Пусть Т представляет собой лес MST, если грань (u,w) принадлежит тому же поддереву T'⊂ T, \
@@ -29,7 +29,7 @@ export const kraskal = {
                     { id: 34, from: 3, to: 4 }
                     ]
                 },
-              animationPath: [12, 13, 14, 24]
+              animationPath: []
             },
         },
         graphQuestion: {

@@ -28,7 +28,7 @@ export default class Theory extends Component {
             <div>
               {this.problemConfig.theory.paragraphs.map(paragraph => (
                 <p>
-                  {paragraph.split("/TAB/",).map(tabbedText => (<span>{tabbedText}&nbsp; &nbsp; &nbsp;</span>))}
+                  {paragraph.split("/TAB/").map(tabbedText => (<span>{tabbedText}&nbsp; &nbsp; &nbsp;</span>))}
                 </p>
               ))}
             </div>
