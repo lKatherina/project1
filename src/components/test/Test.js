@@ -39,7 +39,7 @@ export default class Test extends Component {
     return (
         <div>
             <h2>{this.problemConfig.name} Тест</h2>
-            <div>Пожалуйста, выберите следующее ребро, которое должен выбрать алгоритм. Продолжайте выбирать ребра до тех пор, пока алгоритм не будет завершен.</div>
+            <div>Пожалуйста, выберите следующее ребро, начиная с вершины 1, которое должен выбрать алгоритм. Продолжайте выбирать ребра до тех пор, пока алгоритм не будет завершен.</div>
             <Link to={`/problems/${this.problemConfig.name}/theory`} className="btn-dark btn mt-3">
               Обратно к теории
             </Link>
@@ -114,5 +114,5 @@ const graphOptions = {
     dragView: false,
     zoomView: false
   },
-  height: "500px"
+  height: "800px"
 };
